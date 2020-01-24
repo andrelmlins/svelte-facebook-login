@@ -1,30 +1,99 @@
 <script>
-	export let name;
+  import SvelteFacebookLogin from "svelte-facebook-login";
+
+  let clientId = "";
+  let redirectUri = "https://svelte-facebook-login.netlify.com/";
+  let status = "";
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+  main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+  h1 {
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    margin: 0;
+  }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  h4 {
+    color: white;
+    margin: 10px 0px;
+  }
+
+  p {
+    color: white;
+    margin: 10px 0px;
+  }
+
+  input {
+    width: auto;
+    flex: 1;
+    margin-right: 15px;
+    width: 100%;
+  }
+
+  .input-form {
+    width: 450px;
+    max-width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 40px;
+  }
+
+  .success {
+    color: #4caf50;
+  }
+
+  .failure {
+    color: #b71c1c;
+  }
+
+  .waiting {
+    color: #ffd600;
+  }
 </style>
+
+<main>
+  <h1>Svelte Facebook Login</h1>
+  <h4>Facebook Login Component to Svelte</h4>
+  <div class="input-form">
+    <input
+      id="clientId"
+      type="text"
+      value={clientId}
+      placeholder="Client ID for GitHub OAuth application "
+      on:change={e => (clientId = e.target.value)} />
+    <input
+      id="redirectUri"
+      type="text"
+      value={redirectUri}
+      placeholder="Redirect URI"
+      on:change={e => (redirectUri = e.target.value)} />
+    <br />
+    <SvelteFacebookLogin
+      {clientId}
+      state="1"
+      {redirectUri}
+      on:success={params => (status = 'Success')}
+      on:error={error => (status = 'Failure')}
+      on:request={() => (status = 'Waiting')}
+      let:onLogin>
+      <button on:click={onLogin}>Facebook Login</button>
+    </SvelteFacebookLogin>
+  </div>
+  {#if status}
+    <p>
+      Status:
+      <span class={status.toLowerCase()}>{status}</span>
+    </p>
+  {/if}
+</main>
