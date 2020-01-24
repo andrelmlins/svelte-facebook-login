@@ -1,6 +1,6 @@
 {
   "name": "svelte-facebook-login",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Facebook Login Component to Svelte",
   "repository": "https://github.com/andrelmlins/svelte-facebook-login",
   "author": "André Lins <andrelucas01@hotmail.com> (https://andrelmlins.github.io/",
