@@ -1,7 +1,34 @@
 {
   "name": "svelte-facebook-login",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Facebook Login Component to Svelte",
+  "repository": "https://github.com/andrelmlins/svelte-facebook-login",
+  "author": "André Lins <andrelucas01@hotmail.com> (https://andrelmlins.github.io/",
   "license": "MIT",
-  "private": false
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "homepage": "https://facebook-github-login.netlify.com/",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/andrelmlins/svelte-facebook-login/issues"
+  },
+  "keywords": [
+    "svelte",
+    "facebook",
+    "login"
+  ],
+  "devDependencies": {
+    "rollup": "^1.29.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "svelte": "^3.17.3"
+  }
 }
