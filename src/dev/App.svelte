@@ -1,5 +1,5 @@
 <script>
-  import SvelteFacebookLogin from "../lib/index.svelte";
+  import FacebookLogin from "../lib/FacebookLogin.svelte";
 
   let clientId = "";
   let redirectUri = "https://svelte-facebook-login.netlify.com/";
@@ -79,7 +79,7 @@
       placeholder="Redirect URI"
       on:change={e => (redirectUri = e.target.value)} />
     <br />
-    <SvelteFacebookLogin
+    <FacebookLogin
       {clientId}
       state="1"
       {redirectUri}
@@ -88,7 +88,7 @@
       on:request={() => (status = 'Waiting')}
       let:onLogin>
       <button on:click={onLogin}>Facebook Login</button>
-    </SvelteFacebookLogin>
+    </FacebookLogin>
   </div>
   {#if status}
     <p>

@@ -5,10 +5,12 @@
   "repository": "https://github.com/andrelmlins/svelte-facebook-login",
   "author": "André Lins <andrelucas01@hotmail.com> (https://andrelmlins.github.io/)",
   "license": "MIT",
+  "svelte": "src/lib/FacebookLogin.svelte",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
   "homepage": "https://svelte-facebook-login.netlify.com/",
   "files": [
+    "src/lib/FacebookLogin.svelte",
     "dist",
     "README.md"
   ],

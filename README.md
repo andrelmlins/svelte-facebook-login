@@ -12,6 +12,8 @@ npm i svelte-facebook-login
 yarn add svelte-facebook-login
 ```
 
+<em>Note: to use this library in sapper, install as devDependency. See the [link](https://github.com/sveltejs/sapper-template#using-external-components).</em>
+
 ## Demo [Link](https://svelte-facebook-login.netlify.com/)
 
 Local demo:
@@ -24,12 +26,14 @@ yarn install && yarn start
 
 ## Examples
 
+An example of how to use the library:
+
 ```js
 <script>
-  import SvelteFacebookLogin from "svelte-facebook-login";
+  import FacebookLogin from "svelte-facebook-login";
 </script>
 
-<SvelteFacebookLogin
+<FacebookLogin
   clientId="XXX"
   state="1"
   redirectUri="http://localhost:5000/"
@@ -38,7 +42,7 @@ yarn install && yarn start
   let:onLogin
 >
   <button on:click={onLogin}>Facebook Login</button>
-</SvelteFacebookLogin>
+</FacebookLogin>
 ```
 
 ## Properties
