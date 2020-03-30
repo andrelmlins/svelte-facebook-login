@@ -56,9 +56,14 @@ Raw component props (before transform):
 | redirectUri  | string | Registered redirect URI for Facebook OAuth application                      |
 | responseType | string | Grant type the application wants to use                                     |
 | scope        | string | A space-delimited list of permissions that the application requires         |
-| success      | string | Call with success                                                           |
-| error        | string | Call with error                                                             |
-| request      | string | Call with offset                                                            |
+
+## Events
+
+| Prop    | Type | Description       |
+| ------- | ---- | ----------------- |
+| success | func | Call with success |
+| error   | func | Call with error   |
+| request | func | Call with offset  |
 
 ## Slot Properties
 
