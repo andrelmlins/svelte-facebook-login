@@ -4,6 +4,8 @@
   export let clientId;
   export let state;
   export let redirectUri;
+  export let responseType;
+  export let scope;
 
   const dispatch = createEventDispatcher();
   const urlFacebook = "https://www.facebook.com/v5.0/dialog/oauth";
@@ -57,7 +59,16 @@
   };
 
   const onLogin = () => {
-    const urlParams = `client_id=${clientId}&state=${state}&redirect_uri=${redirectUri}`;
+    let urlParams = `client_id=${clientId}&state=${state}&redirect_uri=${redirectUri}`;
+
+    if (responseType) {
+      urlParams += `response_type=${responseType}`;
+    }
+
+    if (scope) {
+      urlParams += `scope=${scope}`;
+    }
+
     popupWindow = window.open(
       `${urlFacebook}?${urlParams}`,
       "facebook-oauth",

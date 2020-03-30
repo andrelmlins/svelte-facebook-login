@@ -49,15 +49,16 @@ An example of how to use the library:
 
 Raw component props (before transform):
 
-| Prop        | Type   | Description                                                                 |
-| ----------- | ------ | --------------------------------------------------------------------------- |
-| clientId    | string | Client ID for Facebook OAuth application                                    |
-| state       | string | Value created by the maintenance state between the request and the callback |
-|             |
-| redirectUri | string | Registered redirect URI for Facebook OAuth application                      |
-| success     | string | Call with success                                                           |
-| error       | string | Call with error                                                             |
-| request     | string | Call with offset                                                            |
+| Prop         | Type   | Description                                                                 |
+| ------------ | ------ | --------------------------------------------------------------------------- |
+| clientId     | string | Client ID for Facebook OAuth application                                    |
+| state        | string | Value created by the maintenance state between the request and the callback |
+| redirectUri  | string | Registered redirect URI for Facebook OAuth application                      |
+| responseType | string | Grant type the application wants to use                                     |
+| scope        | string | A space-delimited list of permissions that the application requires         |
+| success      | string | Call with success                                                           |
+| error        | string | Call with error                                                             |
+| request      | string | Call with offset                                                            |
 
 ## Slot Properties
 
