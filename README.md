@@ -47,7 +47,7 @@ An example of how to use the library:
 
 ## Properties
 
-Raw component props (before transform):
+Component props:
 
 | Prop         | Type   | Description                                                                 |
 | ------------ | ------ | --------------------------------------------------------------------------- |
