@@ -21,7 +21,7 @@ Local demo:
 ```
 git clone https://github.com/andrelmlins/svelte-facebook-login.git
 cd svelte-facebook-login
-yarn install && yarn start
+npm install && npm run dev
 ```
 
 ## Examples
