@@ -3,13 +3,15 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
+import autoPreprocess from "svelte-preprocess";
+import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
 
 const production = !process.env.ROLLUP_WATCH;
 
 export default [
   {
-    input: "src/dev/main.js",
+    input: "src/dev/main.ts",
     output: {
       sourcemap: true,
       format: "iife",
@@ -20,7 +22,9 @@ export default [
       svelte({
         dev: !production,
         css: (css) => css.write("bundle.css"),
+        preprocess: autoPreprocess(),
       }),
+      typescript({ sourceMap: !production }),
       resolve({
         browser: true,
         dedupe: (importee) =>

@@ -1,10 +1,47 @@
-<script>
+<script lang="ts">
   import FacebookLogin from "../lib/FacebookLogin.svelte";
 
   let clientId = "";
   let redirectUri = "https://svelte-facebook-login.netlify.com/";
   let status = "";
 </script>
+
+<main>
+  <h1>Svelte Facebook Login</h1>
+  <h4>Facebook Login Component to Svelte</h4>
+  <div class="input-form">
+    <input
+      id="clientId"
+      type="text"
+      placeholder="Client ID for GitHub OAuth application "
+      bind:value={clientId}
+    />
+    <input
+      id="redirectUri"
+      type="text"
+      bind:value={redirectUri}
+      placeholder="Redirect URI"
+    />
+    <br />
+    <FacebookLogin
+      {clientId}
+      state="1"
+      {redirectUri}
+      on:success={() => (status = "Success")}
+      on:error={() => (status = "Failure")}
+      on:request={() => (status = "Waiting")}
+      let:onLogin
+    >
+      <button on:click={onLogin}>Facebook Login</button>
+    </FacebookLogin>
+  </div>
+  {#if status}
+    <p>
+      Status:
+      <span class={status.toLowerCase()}>{status}</span>
+    </p>
+  {/if}
+</main>
 
 <style>
   main {
@@ -61,39 +98,3 @@
     color: #ffd600;
   }
 </style>
-
-<main>
-  <h1>Svelte Facebook Login</h1>
-  <h4>Facebook Login Component to Svelte</h4>
-  <div class="input-form">
-    <input
-      id="clientId"
-      type="text"
-      value={clientId}
-      placeholder="Client ID for GitHub OAuth application "
-      on:change={e => (clientId = e.target.value)} />
-    <input
-      id="redirectUri"
-      type="text"
-      value={redirectUri}
-      placeholder="Redirect URI"
-      on:change={e => (redirectUri = e.target.value)} />
-    <br />
-    <FacebookLogin
-      {clientId}
-      state="1"
-      {redirectUri}
-      on:success={params => (status = 'Success')}
-      on:error={error => (status = 'Failure')}
-      on:request={() => (status = 'Waiting')}
-      let:onLogin>
-      <button on:click={onLogin}>Facebook Login</button>
-    </FacebookLogin>
-  </div>
-  {#if status}
-    <p>
-      Status:
-      <span class={status.toLowerCase()}>{status}</span>
-    </p>
-  {/if}
-</main>
