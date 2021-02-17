@@ -3,6 +3,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
+import copy from "rollup-plugin-copy";
 import autoPreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
@@ -40,13 +41,25 @@ export default [
   {
     input: "src/lib/FacebookLogin.svelte",
     output: { file: pkg.main, format: "umd", name: "Facebook Login" },
-    plugins: [svelte(), resolve(), commonjs()],
+    plugins: [
+      svelte({ preprocess: autoPreprocess() }),
+      typescript({ sourceMap: false }),
+      resolve(),
+      commonjs(),
+    ],
   },
   {
     input: "src/lib/FacebookLogin.svelte",
     output: { file: pkg.module, format: "es" },
     external: ["svelte/internal"],
-    plugins: [svelte(), commonjs()],
+    plugins: [
+      svelte({ preprocess: autoPreprocess() }),
+      typescript({ sourceMap: false }),
+      commonjs(),
+      copy({
+        targets: [{ src: "src/lib/FacebookLogin.svelte", dest: "dist" }],
+      }),
+    ],
   },
 ];
 
