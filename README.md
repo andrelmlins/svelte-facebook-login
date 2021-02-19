@@ -12,6 +12,14 @@ npm i svelte-facebook-login
 yarn add svelte-facebook-login
 ```
 
+**version with typescript**
+
+```
+npm i svelte-facebook-login@next
+// OR
+yarn add svelte-facebook-login@next
+```
+
 <em>Note: to use this library in sapper, install as devDependency. See the [link](https://github.com/sveltejs/sapper-template#using-external-components).</em>
 
 ## Demo [Link](https://svelte-facebook-login.netlify.com/)
