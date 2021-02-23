@@ -6,6 +6,7 @@
   export let redirectUri;
   export let responseType;
   export let scope;
+  export let pollInterval = 500;
 
   const dispatch = createEventDispatcher();
   const urlFacebook = "https://www.facebook.com/v5.0/dialog/oauth";
@@ -55,7 +56,7 @@
       } catch (error) {
         // error
       }
-    }, 500);
+    }, pollInterval);
   };
 
   const onLogin = () => {
