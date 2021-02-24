@@ -64,6 +64,7 @@ Component props:
 | redirectUri  | string | Registered redirect URI for Facebook OAuth application                      |
 | responseType | string | Grant type the application wants to use                                     |
 | scope        | string | A space-delimited list of permissions that the application requires         |
+| pollInterval | number | Login success analysis interval                                             |
 
 ## Events
 
