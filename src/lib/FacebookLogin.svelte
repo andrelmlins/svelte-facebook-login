@@ -1,23 +1,28 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from "svelte";
 
-  export let clientId;
-  export let state;
-  export let redirectUri;
-  export let responseType;
-  export let scope;
-  export let pollInterval = 500;
+  export let clientId: string;
+  export let state: string;
+  export let redirectUri: string;
+  export let responseType: string | undefined = undefined;
+  export let scope: string | undefined = undefined;
+  export let pollInterval: number = 500;
 
-  const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher<{
+    success: Record<string, any>;
+    error: Error;
+    request: never;
+  }>();
+
   const urlFacebook = "https://www.facebook.com/v5.0/dialog/oauth";
-  let interval = 0;
-  let popupWindow;
+  let interval: number | null = 0;
+  let popupWindow: Window | null;
 
-  const convertQueryParams = url => {
+  const convertQueryParams = (url: string): Record<string, any> => {
     const query = url.substr(1);
-    const result = {};
+    const result: Record<string, any> = {};
 
-    query.split("&").forEach(param => {
+    query.split("&").forEach((param) => {
       const item = param.split("=");
       result[item[0]] = decodeURIComponent(item[1]);
     });
@@ -31,7 +36,9 @@
       interval = null;
     }
 
-    popupWindow.close();
+    if (popupWindow) {
+      popupWindow.close();
+    }
   };
 
   // SvelteGithubLogin based
